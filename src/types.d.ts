@@ -53,3 +53,21 @@ export interface Order extends ApiOrder {
 export interface FetchError {
   code: string;
 }
+
+
+export interface CompleteOrder {
+  id: string;
+  customer: Customer;
+  dishes: DishItem[];
+  total: number;
+}
+
+export interface DishItem {
+  dish: {
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+  };
+  amount: number;
+}
