@@ -18,7 +18,7 @@ const DishesList = () => {
     return (
         <div className='border-dishes'>
             <h2 className='text-center'>Список блюд</h2>
-            {dishes.map((dish => (
+            {dishes.map(dish => (
                 <div className='text-center' key={dish.id}>
                     <img src={dish.image} alt={dish.title} style={{width: '100px', height: '100px'}}/>
                     <h3>{dish.title}</h3>
