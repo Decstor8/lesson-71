@@ -21,19 +21,8 @@ const EditDish: React.FC = () => {
   const dish = useAppSelector(selectOneDish);
 
   const fetchDish = useCallback(async () => {
-    // try {
       dispatch(fetchOneDish(id || ''));
-    // } catch (e) {
-    //   console.log(e);
-    //   navigate('/404', {replace: true});
-    // }
   }, [dispatch, id]);
-
-  // useEffect(() => {
-  //   if (fetchError && fetchError.code === 'not_found') {
-  //     navigate('/404', {replace: true});
-  //   }
-  // }, [fetchError, navigate]);
 
   useEffect(() => {
     void fetchDish();

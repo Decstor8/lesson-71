@@ -1,29 +1,37 @@
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
 import Home from './containers/Home';
+import AdminDashboard from './containers/AdminMain';
+import DishesList from './containers/DishList';
 import NewDish from './containers/NewDish';
-import {Route, Routes} from 'react-router-dom';
+import EditDish from './containers/EditDish';
+import OrdersList from './containers/OrdersList';
 import Checkout from './containers/Checkout';
 import Order from './components/Cart/Order';
-import EditDish from './containers/EditDish';
 import Orders from './containers/Orders';
-import Layout from './components/Layout/Layout';
-import OrdersList from "./containers/OrdersList";
+import './App.css';
 
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/admin/orders" element={<OrdersList />} />
-        <Route path="/" element={(<Home />)} />
-        <Route path="/new-dish" element={(<NewDish />)}/>
-        <Route path="/edit-dish/:id" element={(<EditDish />)}/>
-        <Route path="/checkout" element={(<Checkout />)}>
-          <Route path="continue" element={(<Order />)} />
-        </Route>
-        <Route path="/orders" element={<Orders />} />
-        <Route path="*" element={<h1>Not found!</h1>} />
-      </Routes>
-    </Layout>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />}>
+            <Route path="continue" element={<Order />} />
+          </Route>
+          <Route path="/orders" element={<Orders />} />
+
+          <Route path="/admin" element={<AdminDashboard />}>
+            <Route path="dishes" element={<DishesList />} />
+            <Route path="dishes/new" element={<NewDish />} />
+            <Route path="dishes/edit/:id" element={<EditDish />} />
+            <Route path="orders" element={<OrdersList />} />
+          </Route>
+
+          <Route path="*" element={<h1>Not Found</h1>} />
+        </Routes>
+      </Layout>
   );
 }
 
-export default App
+export default App;

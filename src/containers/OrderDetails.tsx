@@ -6,13 +6,14 @@ interface OrderDetailsProps {
 }
 
 const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
-
+    const devilery = 150;
     const totalPrice = order.dishes.reduce((sum, cartDish) => {
-        return sum + cartDish.amount * cartDish.dish.price;
+        return sum + cartDish.amount * cartDish.dish.price + devilery;
     }, 0);
 
     return (
-        <div>
+        <div className='border-color'>
+            <p>Devilery: {devilery}</p>
             <p>Customer: {order.customer.name}</p>
             <p>Address: {order.customer.address}</p>
             <p>Phone: {order.customer.phone}</p>
@@ -21,7 +22,7 @@ const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
                     <li key={index}>
                         Блюдо: {item.dish.name}, Количество: {item.amount}, Цена: {item.dish.price}
                         {item.dish.description && (<p>Описание: {item.dish.description}</p>)}
-                        {item.dish.image && (<img src={item.dish.image} alt={item.dish.name} style={{width: "100px"}}/>)}
+                        {item.dish.image && (<img className='img-main' src={item.dish.image} alt={item.dish.name} style={{width: "100px"}}/>)}
                     </li>
                 ))}
             </ul>
